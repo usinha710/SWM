@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Smart Waste Management</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar" style="margin-bottom: 2rem;">
+        <div class="logo">SmartWasteAI</div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li id="lgr"><a href="register.html">Login/Register</a></li>
+            <li id="user-name" style="display: none;">
+                <span></span>
+                <button id="logout-btn" style="margin-left: 20px;">Logout</button>
+            </li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="detection.html" id="ai-detection" style="display: none;">AI Detection</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="previousComplaints.html">History</a></li>
+            <button id="theme-toggle" title="Toggle Dark Mode">
+                <span class="mode-icon">🌙</span>
+            </button>
+        </ul>
+    </nav>
+
+    <div class="main-box">
+        <h2 style="margin-bottom: 30px; font-size: 30px; font-weight: 400;">Login</h2>
+        <div class="register-contents">
+            <input type="text" id="mail" placeholder="Email here" autocomplete="off">
+            <input type="password" id="password" placeholder="Password">
+        </div>
+
+        <button type="submit" class="auth-btn">
+            <span class="btn-text">Submit</span>
+            <span class="spinner"></span>
+        </button>
+
+        <p>New user? <a href="register.html">Register</a></p>
+
+        <button id="admin_login" style="margin-top: 4rem; padding: 10px 20px; border-radius: 10px; cursor: pointer; background-color: #007bff; color: white; border: none;">Admin Login</button>
+
+    </div>
+
+
+    <footer id="contact" style="margin-top: 3rem;">
+        <h3>Made by Rishit Mohanty</h3>
+        <p>For academic & development purposes</p>
+        <div class="social-icons">
+            <a href="https://github.com/noneclashofclans" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script src="script/login.js"></script>
+    <script src="script/theme_toggle.js"></script>
+    <script src="script/user_login_status.js"></script>
+</body>
+
+</html>

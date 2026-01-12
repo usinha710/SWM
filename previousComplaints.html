@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint History | SmartWasteAI</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .history-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .filter-chip {
+            padding: 6px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition);
+        }
+
+        .filter-chip.active {
+            background-color: #e8f0fe;
+            color: var(--google-blue);
+            border-color: var(--google-blue);
+        }
+
+        .complaint-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+            display: grid;
+            grid-template-columns: 80px 1fr 120px;
+            align-items: center;
+            gap: 20px;
+            transition: var(--transition);
+        }
+
+        .complaint-card:hover {
+            box-shadow: var(--shadow-flat);
+        }
+
+        .complaint-thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: 4px;
+            object-fit: cover;
+            background: #f1f3f4;
+        }
+
+        .complaint-info h3 {
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .complaint-info p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .status-badge {
+            font-size: 12px;
+            font-weight: 500;
+            padding: 4px 12px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .status-dispatched {
+            background: #e8f0fe;
+            color: #1967d2;
+        }
+
+        .login-prompt {
+            background: #fef7e0;
+            border: 1px solid #fdd663;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .login-prompt a {
+            color: var(--google-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-prompt a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .complaint-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .complaint-thumb {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">SmartWasteAI</div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li id="lgr"><a href="register.html">Login/Register</a></li>
+            <li id="user-name" style="display: none;">
+                <span></span>
+                <button id="logout-btn" style="margin-left: 20px;">Logout</button>
+            </li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="detection.html" id="ai-detection" style="display: none;">AI Detection</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="previousComplaints.html" class="active">History</a></li>
+            <li>
+                <button id="theme-toggle" title="Toggle Dark Mode">
+                    <span class="mode-icon">🌙</span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="main-content-wrapper">
+        <section class="hero" style="text-align: center; padding-bottom: 20px;">
+            <h1>Track Report History</h1>
+            <p>View your waste report submission history.</p>
+
+
+            <div id="search-section" style="max-width: 500px; margin: 30px auto; display: flex; gap: 10px;">
+                <input type="email" id="track-email" placeholder="email@example.com"
+                    style="flex: 1; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 14px; outline: none;">
+                <button class="btn" id="search-btn" style="margin-top: 0; padding: 0 24px;">View History</button>
+            </div>
+        </section>
+
+        <section id="results-section" class="hidden">
+            <div class="history-filters" style="border-top: 1px solid var(--border-color); padding-top: 20px;">
+                <div class="filter-chip active">
+                    <i class="fas fa-paper-plane"></i> My Dispatched Reports
+                </div>
+            </div>
+
+            <div id="history-list"></div>
+        </section>
+
+        <section id="empty-state" class="hidden" style="text-align: center; padding: 40px;">
+            <i class="fas fa-inbox" style="font-size: 48px; color: #dadce0; margin-bottom: 20px;"></i>
+            <p style="color: var(--text-secondary); font-size: 16px; margin-bottom: 8px;">No reports found</p>
+            <p style="color: var(--text-secondary); font-size: 14px;">Start by submitting a waste report through the <a
+                    href="detection.html" style="color: var(--google-blue);">AI Detection</a> page.</p>
+        </section>
+    </div>
+
+    <div id="chat-popup" class="hidden"
+        style="position: fixed; bottom: 20px; right: 20px; width: 300px; background: white; border: 1px solid #ccc; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border-radius: 10px; z-index: 1000; display: flex; flex-direction: column;">
+        <div
+            style="background: #4285f4; color: white; padding: 10px; border-radius: 10px 10px 0 0; display: flex; justify-content: space-between;">
+            <span id="chat-header-id">Chat</span>
+            <button onclick="closeChat()"
+                style="background:none; border:none; color:white; cursor:pointer;">&times;</button>
+        </div>
+        <div id="chat-messages-container"
+            style="height: 250px; overflow-y: auto; padding: 10px; font-size: 14px; background: #f9f9f9;"></div>
+        <div style="padding: 10px; display: flex; gap: 5px; border-top: 1px solid #eee;">
+            <input type="text" id="chat-input" placeholder="Type a message..."
+                style="flex: 1; padding: 5px; border: 1px solid #ddd; border-radius: 5px;">
+            <button onclick="sendChatMessage()"
+                style="background: #4285f4; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">Send</button>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <h3>Made by Rishit Mohanty</h3>
+        <p>For academic & development purposes</p>
+        <div class="social-icons">
+            <a href="https://github.com/noneclashofclans" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>    
+    <script src="script/user_login_status.js"></script>
+    <script src="script/script.js"></script>
+    <script src="script/theme_toggle.js"></script>
+    <script src="script/authGuard.js"></script>
+</body>
+
+</html>

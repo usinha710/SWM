@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Smart Waste Management</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .contact-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 32px;
+            transition: box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-card:hover {
+            box-shadow: var(--shadow-flat);
+        }
+
+        .contact-card i.main-icon {
+            font-size: 32px;
+            color: var(--google-blue);
+            margin-bottom: 8px;
+        }
+
+        .contact-card h3 {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .contact-link-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 15px;
+            color: var(--text-primary);
+        }
+
+        .contact-link-item i {
+            color: var(--text-secondary);
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-link-item a {
+            color: var(--google-blue);
+            text-decoration: none;
+        }
+
+        .contact-link-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+    <div class="logo">SmartWasteAI</div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <ul class="nav-links">
+        <li id="lgr"><a href="register.html">Login/Register</a></li>
+        <li id="user-name" style="display: none;">
+            <span></span> 
+            <button id="logout-btn" style="margin-left: 20px;">Logout</button>
+        </li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="detection.html" id="ai-detection" style="display: none;">AI Detection</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="previousComplaints.html">History</a></li>
+        <button id="theme-toggle" title="Toggle Dark Mode">
+            <span class="mode-icon">🌙</span>
+        </button>
+    </ul>
+</nav>
+
+    <div class="main-content-wrapper">
+
+        <section class="hero">
+            <h1>Contact and Support</h1>
+            <p>Need help with the SmartWasteAI system? Reach out for technical support, academic collaborations, or municipal inquiries.</p>
+        </section>
+
+        <section class="features">
+            <div class="feature-cards">
+                
+                <div class="contact-card">
+                    <i class="fas fa-code main-icon"></i>
+                    <h3>Developer Support</h3>
+                    <p>Maintained by Rishit Mohanty for academic and developmental purposes.</p>
+                    
+                    <div class="contact-link-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:rishitmohanty3@gmail.com">rishitmohanty3@gmail.com</a>
+                    </div>
+                    
+                    <div class="contact-link-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91-9425403369</span>
+                    </div>
+
+                    <div class="contact-link-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Bhubaneswar, Odisha, India</span>
+                    </div>
+
+                    <a href="https://github.com/noneclashofclans" target="_blank" class="btn" style="margin-top: 15px; background-color: var(--bg-alt); color: var(--text-primary); border: 1px solid var(--border-color);">
+                        <i class="fab fa-github"></i> GitHub Profile
+                    </a>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fas fa-building main-icon" style="color: var(--google-green);"></i>
+                    <h3>Municipal Integration</h3>
+                    <p>Reports are forwarded to the Bhubaneswar Municipal Corporation (BMC) system via automated email notification.</p>
+                    
+                    <div class="contact-link-item">
+                        <i class="fas fa-life-ring"></i>
+                        <a href="https://www.linkedin.com/in/rishit-mohanty-620bbb284/">Support Channel</a>
+                    </div>
+
+                    <div class="contact-link-item">
+                        <i class="fas fa-external-link-alt"></i>
+                        <a href="https://www.bmc.gov.in/help-desk" target="_blank">BMC Helpdesk</a>
+                    </div>
+
+                    <p style="margin-top: 10px; font-style: italic;">Note: For technical bugs or API issues, please open an issue on the project's GitHub repository.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </div> 
+
+    <footer id="contact">
+        <h3>Made by Rishit Mohanty</h3>
+        <p>For academic & development purposes</p>
+
+        <div class="social-icons">
+            <a href="https://github.com/noneclashofclans" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/yourusername" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </footer>
+      <script src="script/theme_toggle.js"></script>
+      <script src="script/user_login_status.js"></script>
+</body>
+</html>

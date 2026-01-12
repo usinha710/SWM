@@ -1,0 +1,38 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.env
+
+# Large ML Model files (Better to host these or use Git LFS)
+*.h5
+*.keras
+waste_classifier.h5
+Backend/waste_model.h5
+
+# Datasets (Too large for GitHub)
+waste_datasets/
+data/
+*.zip
+*.tar.gz
+
+# IDE / Editor folders
+.vscode/
+.idea/
+.DS_Store
+
+# Logs and temporary files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.node_repl_history
+
+# Node dependencies (if any)
+node_modules/

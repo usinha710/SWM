@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | SmartWasteAI</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" style="margin-bottom: 2rem;">
+        <div class="logo">SmartWasteAI</div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li id="llg"><a href="login.html">User Login</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-box">
+        <h2 style="margin-bottom: 30px; font-size: 30px; font-weight: 400;">Admin Login</h2>
+        <div class="register-contents">
+            <input type="text" id="admin_mail" placeholder="Admin Email here" autocomplete="off">
+            <input type="password" id="admin_password" placeholder="Password" autocomplete="off">
+        </div>
+
+        <button type="submit" class="auth-btn">
+            <span class="btn-text">Submit</span>
+            <span class="spinner"></span>
+        </button>
+
+        <p>Not an admin? <a href="login.html">User Login</a></p>
+
+        <script src="script/admin_login.js"></script>
+</body>
+</html>

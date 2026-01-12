@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Smart Waste Management</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">SmartWasteAI</div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li id="lgr"><a href="register.html">Login/Register</a></li>
+            <li id="user-name" style="display: none;">
+                <span></span>
+                <button id="logout-btn" style="margin-left: 20px;">Logout</button>
+            </li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="detection.html" id="ai-detection" style="display: none;">AI Detection</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="previousComplaints.html">History</a></li>
+            <button id="theme-toggle" title="Toggle Dark Mode">
+                <span class="mode-icon">🌙</span>
+            </button>
+        </ul>
+    </nav>
+
+    <div class="main-content-wrapper">
+
+        <section class="hero">
+            <h1>About the Project</h1>
+            <div class="about-image" style="margin-bottom: 30px;">
+                <img src="images/new.png" alt="Rishit Mohanty"
+                    style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid #fff; box-shadow: var(--shadow-flat);">
+            </div>
+
+            <div class="hero-content" style="text-align: left; max-width: 800px; margin: 0 auto;">
+                <p>
+                    <strong>SmartWasteAI</strong> is a comprehensive system built on the pillars of Deep Learning and
+                    the Internet of Things (IoT), aiming to modernize traditional waste management cycles. Our core goal
+                    is to shift the paradigm from reactive waste collection to a proactive, data-driven approach.
+                </p>
+
+                <p>
+                    The system's intelligence stems from two key components: a high-accuracy image classification model
+                    that identifies waste materials at the source (differentiating between Biodegradable,
+                    Non-Biodegradable, etc.), and IoT sensors utilized for real-time monitoring of collection bins
+                    across a geographic area.
+                </p>
+
+                <p>
+                    This project is developed by <strong>Rishit Mohanty</strong> for academic and developmental
+                    purposes, showcasing a viable and scalable solution for smart city infrastructure to promote
+                    environmental sustainability and enhance resource recovery accuracy.
+                </p>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>Core Objectives & Mission</h2>
+            <div class="feature-cards">
+
+                <div class="feature-card">
+                    <i class="fas fa-leaf"
+                        style="color: var(--google-green); font-size: 24px; margin-bottom: 15px;"></i>
+                    <h3>Sustainability & Resource Purity</h3>
+                    <p>To promote highly effective recycling by minimizing contamination. By using AI classification, we
+                        ensure that waste is properly categorized for optimal reuse and resource purification.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-robot"
+                        style="color: var(--google-blue); font-size: 24px; margin-bottom: 15px;"></i>
+                    <h3>Operational Efficiency & Automation</h3>
+                    <p>To drastically reduce collection costs and labor hours, the combination of AI predictions and IoT
+                        monitoring enables dynamic route optimization, ensuring vehicles only travel when bins are
+                        nearing capacity.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer id="contact">
+        <h3>Made by Rishit Mohanty</h3>
+        <p>For academic & development purposes</p>
+
+        <div class="social-icons">
+            <a href="https://github.com/noneclashofclans" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/yourusername" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </footer>
+    <script src="script/theme_toggle.js"></script>
+    <script src="script/user_login_status.js"></script>
+</body>
+
+</html>

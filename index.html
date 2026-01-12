@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Waste Management | Home</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .donut {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.45;
+            pointer-events: none;
+        }
+
+
+        .donut-1 {
+            width: 120px;
+            height: 120px;
+            background: conic-gradient(from 0deg, #ff6b9d, #c44569, #ff6b9d);
+            top: 50px;
+            left: 5%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .donut-2 {
+            width: 80px;
+            height: 80px;
+            background: conic-gradient(from 45deg, #4facfe, #00f2fe, #4facfe);
+            top: 200px;
+            right: 8%;
+            animation: float 7s ease-in-out infinite 1s;
+        }
+
+        .donut-3 {
+            width: 100px;
+            height: 100px;
+            background: conic-gradient(from 90deg, #feca57, #ff9ff3, #feca57);
+            bottom: 150px;
+            left: 10%;
+            animation: float 8s ease-in-out infinite 2s;
+        }
+
+        .donut-4 {
+            width: 60px;
+            height: 60px;
+            background: conic-gradient(from 180deg, #48dbfb, #0abde3, #48dbfb);
+            top: 400px;
+            right: 15%;
+            animation: float 5s ease-in-out infinite 0.5s;
+        }
+
+        .donut-5 {
+            width: 60px;
+            height: 60px;
+            background: conic-gradient(from 180deg, #32afcb, #f18e05, #b8e849);
+            top: 800px;
+            right: 15%;
+            animation: float 5s ease-in-out infinite 0.5s;
+        }
+
+        .donut-hole {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40%;
+            height: 40%;
+            background: white;
+            border-radius: 50%;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        .hero,
+        .features,
+        .integration-details {
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .donut {
+                opacity: 0.1;
+            }
+
+            .donut-1 {
+                width: 80px;
+                height: 80px;
+            }
+
+            .donut-2 {
+                width: 60px;
+                height: 60px;
+            }
+
+            .donut-3 {
+                width: 70px;
+                height: 70px;
+            }
+
+            .donut-4 {
+                width: 50px;
+                height: 50px;
+            }
+
+            .donut-5 {
+                width: 65px;
+                height: 65px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+    <div class="logo">SmartWasteAI</div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <ul class="nav-links">
+        <li id="lgr"><a href="register.html">Login/Register</a></li>
+        <li id="user-name" style="display: none;">
+            <span></span> 
+            <button id="logout-btn" style="margin-left: 20px;">Logout</button>
+        </li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="detection.html" id="ai-detection" style="display: none;">AI Detection</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="previousComplaints.html">History</a></li>
+        <button id="theme-toggle" title="Toggle Dark Mode">
+            <span class="mode-icon">🌙</span>
+        </button>
+    </ul>
+</nav>
+    <div class="main-content-wrapper">
+        <section class="hero">
+            <div class="donut donut-1">
+                <div class="donut-hole"></div>
+            </div>
+            <div class="donut donut-2">
+                <div class="donut-hole"></div>
+            </div>
+
+
+            <div class="hero-content">
+                <h1 style="font-size: 45px; font-weight: 600;">Smart Waste Management</h1>
+                <p>
+                    Our platform integrates sophisticated Machine Learning models with IoT infrastructure to provide
+                    high-fidelity waste classification.
+                    This system goes beyond basic sorting, offering precise identification of materials at the source to
+                    improve downstream processing,
+                    ensure regulatory compliance, and drastically reduce the operational inefficiencies associated with
+                    contamination and manual sorting errors.
+                </p>
+                <p>
+                    Leveraging n8n workflow automation, our system creates a seamless data pipeline that connects
+                    AI-powered waste detection directly
+                    to the Bhubaneswar Municipal Corporation (BMC) in real-time. Every piece of waste analyzed is
+                    automatically logged, categorized,
+                    and transmitted to municipal authorities, enabling data-driven decision-making for urban waste
+                    management at scale.
+                </p>
+                <a href="detection.html" class="btn" style="text-decoration: none; display: none;">Go to AI Detection Interface</a>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="donut donut-3">
+                <div class="donut-hole"></div>
+            </div>
+            <div class="donut donut-4">
+                <div class="donut-hole"></div>
+            </div>
+
+            <h2>System Core Features and Value Proposition</h2>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <h3>Enhanced Material Recovery Accuracy</h3>
+                    <p>
+                        Our AI models achieve near-human level accuracy in distinguishing between Biodegradable and
+                        Non-Biodegradable materials,
+                        significantly reducing contamination rates in recycling streams. This leads to higher purity of
+                        recovered resources and greater profit margins.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3>Comprehensive Data Reporting and Auditing</h3>
+                    <p>
+                        The platform provides instant, auditable data on waste composition, generation rates, and
+                        collection efficiency.
+                        This allows environmental managers to conduct proactive analysis, forecast waste trends, and
+                        demonstrate compliance with environmental standards.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="integration-details">
+            <div class="donut donut-5">
+                <div class="donut-hole"></div>
+            </div>
+
+            <h2>n8n Workflow Automation & BMC Integration</h2>
+            <div class="integration-info">
+                <h3>How the System Works</h3>
+                <p>
+                    Our platform utilizes n8n, a powerful workflow automation tool, to create an intelligent data
+                    pipeline between
+                    the AI detection system and the Brihanmumbai Municipal Corporation's waste management
+                    infrastructure.
+                </p>
+
+                <h4>Real-Time Data Flow Process:</h4>
+                <ol>
+                    <li><strong>AI Detection & Classification:</strong> When waste is scanned through our detection
+                        interface,
+                        the deep learning model analyzes the image and classifies it as biodegradable or
+                        non-biodegradable, helping in easy waste segregation.</li>
+
+                    <li><strong>Automated n8n Workflow Trigger:</strong> Upon successful classification, an n8n workflow
+                        is automatically
+                        triggered, capturing metadata including waste type, location coordinates (if available),
+                        timestamp, image reference,
+                        and classification confidence level.</li>
+
+                    <li><strong>Data Enrichment & Validation:</strong> The n8n workflow enriches the data by adding
+                        contextual information
+                        such as ward number, collection zone, nearest BMC facility, and historical waste patterns for
+                        that location.</li>
+                </ol>
+                <br>
+                <hr>
+                <h4>Benefits for Municipal Corporation:</h4>
+                <ul>
+
+                    <li><strong>Regulatory Compliance:</strong> Automated documentation ensures adherence to Solid Waste
+                        Management Rules 2016,
+                        environmental regulations, and sustainability reporting requirements with minimal administrative
+                        overhead.</li>
+
+                    <li><strong>Cost Optimization:</strong> Data-driven insights help BMC optimize collection schedules,
+                        reduce operational costs,
+                        and allocate budgets more efficiently across waste management programs.</li>
+
+                </ul>
+
+                <h4>Technical Integration Capabilities:</h4>
+                <p>
+                    The n8n workflow platform provides flexible integration options that can connect with BMC's existing
+                    systems:
+                </p>
+                <ul>
+                    <li>RESTful API endpoints for bidirectional data exchange</li>
+                    <li>Webhook triggers for event-driven updates</li>
+                    <li>Email notifications for critical alerts</li>
+                </ul>
+                <br>
+                <hr>
+                <h4>Scalability & Future Enhancements:</h4>
+                <p>
+                    The system is designed to scale seamlessly from pilot programs to city-wide deployment, with the
+                    flexibility to:
+                </p>
+                <ul>
+                    <li>Expand to multiple waste detection points across Bhubaneswar</li>
+                    <li>Integrate additional waste categories beyond biodegradable/non-biodegradable classification</li>
+                    <li>Connect with smart bin IoT sensors for holistic waste monitoring</li>
+                    <li>Enable predictive analytics and machine learning-powered forecasting</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <footer id="contact">
+        <h3>Made by Rishit Mohanty</h3>
+        <p>For academic & development purposes</p>
+        <div class="social-icons">
+            <a href="https://github.com/noneclashofclans" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/yourusername" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </footer>
+    <script src="script/user_login_status.js"></script>
+    <script src="script/theme_toggle.js"></script>
+</body>
+
+</html>

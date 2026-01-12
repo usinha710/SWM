@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Detection | Smart Waste Management</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .upload-container {
+            border: 2px dashed var(--border-color);
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            transition: var(--transition);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .upload-container:hover {
+            border-color: var(--google-blue);
+            background-color: #f8fbff;
+        }
+
+        .upload-container i {
+            font-size: 48px;
+            color: var(--google-blue);
+            margin-bottom: 15px;
+        }
+
+        #preview {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: var(--shadow-flat);
+        }
+
+        /* Google-style Form Inputs */
+        .model-info input {
+            width: 100%;
+            padding: 12px 16px;
+            margin: 8px 0 20px 0;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: var(--font-main);
+            font-size: 14px;
+            transition: border 0.2s;
+        }
+
+        .model-info input:focus {
+            outline: none;
+            border: 2px solid var(--google-blue);
+            padding: 11px 15px;
+            /* Adjust for border thickness */
+        }
+
+        .result-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 16px;
+            background: #e8f0fe;
+            color: var(--google-blue);
+            font-weight: 500;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">SmartWasteAI</div>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li id="lgr"><a href="register.html">Login/Register</a></li>
+            <li id="user-name" style="display: none;">
+                <span></span>
+                <button id="logout-btn" style="margin-left: 20px;">Logout</button>
+            </li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="detection.html" id="ai-detection" style="display: none;">AI Detection</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="previousComplaints.html">History</a></li>
+            <button id="theme-toggle" title="Toggle Dark Mode">
+                <span class="mode-icon">🌙</span>
+            </button>
+        </ul>
+    </nav>
+
+    <div class="main-content-wrapper">
+
+        <section class="hero" id="detection-hero">
+            <div class="hero-content">
+                <h1>AI Waste Detection Interface</h1>
+                <p>
+                    Experience real-time deep learning classification. Upload an image below to identify materials and
+                    generate an automated report for the Bhubaneswar Municipal Corporation.
+                </p>
+                <div
+                    style="background: #fff3f2; color: #d93025; padding: 12px; border-radius: 8px; font-size: 14px; display: inline-block; border: 1px solid #fad2cf;">
+                    <i class="fas fa-exclamation-circle"></i> <strong>Official Action:</strong> Reports are dispatched
+                    directly to BMC authorities upon submission.
+                </div>
+            </div>
+        </section>
+
+        <section class="ml" id="detection">
+            <div class="upload-container" id="drop-zone">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h3>Upload Waste Image</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">Drag and drop or click to browse</p>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                <button class="btn" onclick="document.getElementById('fileInput').click()" style="cursor: pointer;">Select File</button>
+
+                <div id="preview-wrapper" class="hidden">
+                    <img id="preview" alt="Image Preview">
+                </div>
+
+                <button class="btn hidden" id="detect-button" style="cursor: pointer;">
+                    Run AI Analysis
+                </button>
+            </div>
+
+            <div id="prediction-result" class="model-info hidden"
+                style="border-radius: 12px; border: 1px solid var(--border-color); background: #fff; padding: 30px;">
+                <h3 style="border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">Analysis Result</h3>
+
+                <div style="display: flex; gap: 25px; margin-top: 20px; flex-wrap: wrap;">
+                    <img id="detected-image" alt="Detected Waste Image"
+                        style="width: 200px; height: 200px; object-fit: cover; border-radius: 8px;">
+                    <div style="flex: 1; text-align: left;">
+                        <p id="waste-type" style="font-size: 18px; margin-top: 15px;"><b>Waste Type:</b> Detecting...
+                        </p>
+                        <p id="recommendation" style="color: var(--text-secondary);"><b>Recommendation:</b>
+                            Processing...</p>
+                    </div>
+                </div>
+
+                <hr style="margin: 30px 0;">
+
+                <h3 style="margin-bottom: 20px;">Dispatch Official Report</h3>
+                <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">Provide the following
+                    details to facilitate BMC verification:</p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; text-align: left;">
+                    <input type="text" id="userName" placeholder="Your Full Name" readonly
+                        style="background-color: #f1f3f4; cursor: not-allowed;">
+                    <input type="email" id="userEmail" placeholder="Email Address" readonly
+                        style="background-color: #f1f3f4; cursor: not-allowed;">
+                </div>
+                <div style="text-align: left;">
+                    <input type="text" id="userPhone" placeholder="Phone Number" 
+                        style="background-color: #f1f3f4; cursor: pointer;" >
+                    <input type="text" id="userLocation" placeholder="Detecting location..." required readonly style="background-color: #f1f3f4; cursor: not-allowed;">
+                    <input type="text" id="wasteDescription" placeholder="Notes (e.g. Near Landmark, Ward Number)"
+                        required>
+                </div>
+
+                <button class="btn" id="submit-details" style="width: 100%; height: 48px; font-size: 16px;">
+                    <span id="submit-text">
+                        <i class="fas fa-paper-plane"></i> Dispatch Report to BMC
+                    </span>
+                    <span id="submit-spinner" class="spinner hidden"></span>
+                </button>
+            </div>
+        </section>
+
+    </div>
+
+    <footer id="contact">
+        <h3>Made by Rishit Mohanty</h3>
+        <p>For academic & development purposes</p>
+        <div class="social-icons">
+            <a href="https://github.com/noneclashofclans" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script type="module" src="script/script.js"></script>
+    <script src="script/user_login_status.js"></script>
+    <script src="script/theme_toggle.js"></script>
+    <script src="script/authGuard.js"></script>
+</body>
+
+</html>
